@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "./Card";
 
 import { restaurants } from "../data/dataRestaurant";
-const Shop = () => {
+const Shop = ({ restaurants }) => {
   
   return (
     <>
