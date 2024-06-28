@@ -3,9 +3,9 @@ import React from 'react'
 export const Card = ({img, title, type}) => {
   return (
     <div>
-      <div className="card card-compact w-80 bg-base-100 shadow-xl hover:translate-y-3">
+      <div className="card card-compact w-80 h-80 bg-base-100 shadow-xl hover:translate-y-3">
         <figure>
-          <img src={img} alt={title} />
+          <img className='h-48 w-80 object-cover' id='cardimg' src={img} alt={title} />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{title}</h2>
