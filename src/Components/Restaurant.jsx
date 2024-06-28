@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const Restaurants = () => {
   const [restaurants, setRestaurant] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5174/Restaurant")
+    fetch("http://localhost:5000/restaurants")
       .then((res) => {
         return res.json();
       })
