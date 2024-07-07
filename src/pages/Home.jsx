@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { NameAndSearch, Search } from "../Components";
+import { NameAndSearch, Search} from "../Components";
 import Restaurants from "../Components/Restaurant";
+
 export default function Home() {
   const [restaurants, setRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
@@ -21,6 +22,7 @@ export default function Home() {
     <>
       <div className="container">
         <NameAndSearch />
+        
         <Search restaurants={restaurants} setFilteredRestaurants={setFilteredRestaurants}/>
         <Restaurants restaurants={filteredRestaurants}/>
       </div>

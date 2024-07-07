@@ -1,20 +1,44 @@
-import React from 'react'
+import React from "react";
 
-export const Card = ({img, title, type}) => {
+export const Card = ({ id, img, title, type }) => {
+  const handeDelete = async (id) =>{
+    try {
+      const response = await fetch("http://localhost:3000/restaurants/" + id, {
+        method: "DELETE"
+      });
+      if (response.ok) {
+        alert("DELETE JA");
+        window.location.reload();
+      }
+    } catch (err) {
+      console.log(err);
+    }
+ }
+
   return (
     <div>
       <div className="card card-compact w-80 h-80 bg-base-100 shadow-xl hover:translate-y-3">
         <figure>
-          <img className='h-48 w-80 object-cover' id='cardimg' src={img} alt={title} />
+          <img
+            className="h-48 w-80 object-cover"
+            
+            src={img}
+            alt={title}
+          />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{title}</h2>
           <p>{type}</p>
           <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
+          <button className="btn  btn-error" onClick={()=>handeDelete(id)}>
+              Delete
+            </button>
+            <a href={`/Edit/${id}`} className="btn btn-primary">
+              Edit Now
+            </a>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};

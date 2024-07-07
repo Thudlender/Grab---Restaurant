@@ -1,4 +1,4 @@
-import { usecase, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const Edit = () => {
@@ -11,18 +11,18 @@ const Edit = () => {
     });
     // 2. Get restaurant by ID
     useEffect(()=>{
-        fetch("http://localhost:5000/restaurants")
+        fetch("http://localhost:5000/restaurants/"+id)
           .then((res) => {
             return res.json();
           })
           .then((response) => {
             setRestaurants(response);
-            setFilteredRestaurants(response);
+            
           })
           .catch((err) => {
             console.log(err.message);
           });
-    },[id])
+    },[id]);
     const handleChange = (e) => {
         const { name, value } = e.target;
         setRestaurants({ ...restaurants, [name]: value });
@@ -54,9 +54,10 @@ return (
             type="text"
             className="grow"
             placeholder="Restaurant Name"
+            id="title"
             name="title"
             onChange={handleChange}
-            value={restaurant.title}
+            value={restaurants.title}
             />
             </label>
             <label className="input input-bordered flex items-center gap-2">Restaurant type
@@ -64,9 +65,10 @@ return (
                     type="text"
                     className="grow" 
                     placeholder="Restaurant Name"
-                    name="title"
+                    id="type"
+                    name="type"
                     onChange={handleChange}
-                    value={restaurant.type}
+                    value={restaurants.type}
                      />
             </label>
             <label className="input input-bordered flex items-center gap-2">Restaurant ImageUrl
@@ -74,18 +76,19 @@ return (
                     type="text"
                     className="grow" 
                     placeholder="Restaurant Name"
-                    name="title"
+                    id="img"
+                    name="img"
                     onChange={handleChange}
-                    value={restaurant.img}
+                    value={restaurants.img}
                      />
             </label>
             {restaurants.img && (
                 <div className="flex items-center gap-2">
-                    <img src={restaurant.img}
+                    <img src={restaurants.img}
                     className="h-32" />
                 </div>
             )}
-            <button className="btn btn-success" onClick={handSubmit}>
+            <button type="submit" className="btn btn-success" onClick={handSubmit}>
                 Edit restaurant
             </button>
         </div>
