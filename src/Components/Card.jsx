@@ -3,7 +3,7 @@ import React from "react";
 export const Card = ({ id, img, title, type }) => {
   const handeDelete = async (id) =>{
     try {
-      const response = await fetch("http://localhost:3000/restaurants/" + id, {
+      const response = await fetch("http://localhost:5000/restaurants/" + id, {
         method: "DELETE"
       });
       if (response.ok) {

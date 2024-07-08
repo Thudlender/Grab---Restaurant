@@ -2,7 +2,7 @@
   "restaurants": [
     {
       "id": "1",
-      "title": "แม็กโดเน่า - ราชดำเนิน",
+      "title": "แม็กโดเน่า ห้าวแดกตีน",
       "img": "https://food-cms.grab.com/compressed_webp/merchants/AWh64KYIZXYdMpch2Zem/hero/Cover_7411dabc271045cc986ccb1fd508e132_1717959704893772191.webp",
       "type": "อร่อยอิ่มท้อง ร้องว่าไม่หิว"
     },
@@ -89,12 +89,6 @@
       "title": "KiKi Bar & Bottle Shop - พระนคร",
       "img": "https://food-cms.grab.com/compressed_webp/merchants/3-C6CFFAMVWEM3EA/hero/d845f00f739c4f01b258b62033a6e503_1704687986616978548.webp",
       "type": "คิคิ"
-    },
-    {
-      "id": "e2c0",
-      "title": "TDD",
-      "type": "45698",
-      "img": "https://food-cms.grab.com/compressed_webp/merchants/3-CYVZR7JCBFLWCE/hero/6eb7919f4a7e479fbaa73bc72d6bd1b2_1719811670455801846.webp"
     }
   ]
 }

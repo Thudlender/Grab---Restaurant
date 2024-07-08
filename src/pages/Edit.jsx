@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Edit = () => {
     // 1. Get ID from query string
     const {id} = useParams();
+    const navigate = useNavigate()
     const [restaurants, setRestaurants] = useState({
         title:"",
         type:"",
