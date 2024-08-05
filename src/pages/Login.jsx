@@ -1,6 +1,47 @@
-import React from 'react'
+import {useState} from 'react'
+import AuthService from "../services/auth.service"
+import { useAuthContext } from '../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const [user,setUser] = useState({
+    username:"",
+    password:""
+  });
+  const navigate = useNavigate();
+
+  //const {login} = useAuthContext();
+  const handleChange = (e) =>{
+    const {name, value} = e.target;
+    setUser((user)=>({...user, [name]:value}))
+  }
+
+  const handleSubmit = async() =>{
+    try {
+      const currentUser = await AuthService.login(user.username, user.password);
+      console.log(currentUser);
+      if (currentUser.status === 200) {
+      // login(currentUser.data);
+      Swal.fire({
+        title: "User Login",
+        text: "Login successfully!", 
+        icon: "success",
+      });
+      
+    setUser({
+    username:"",
+    password:""
+  });
+  navigate("/");
+    } 
+    }
+    catch (error) {}
+    Swal.fire({
+      title: "User Login",
+      text: error?.response?.data?.message || error.message,
+      icon: "error",
+    });
+  }
   return (
     <div className="container mx-auto max-w-96 my auto">
       <label className="input input-bordered flex items-center gap-2">
@@ -12,7 +53,14 @@ const Login = () => {
         >
           <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" />
         </svg>
-        <input type="text" className="grow" placeholder="Username" />
+        <input
+          type="text"
+          className="grow"
+          placeholder="Username"
+          value={user.username}
+          onChange={handleChange}
+          name="username"
+        />
       </label>
       <label className="input input-bordered flex items-center gap-2">
         <svg
@@ -27,7 +75,13 @@ const Login = () => {
             clipRule="evenodd"
           />
         </svg>
-        <input type="password" className="grow" value="password" />
+        <input
+          type="password"
+          className="grow"
+          value={user.password}
+          onChange={handleChange}
+          name="password"
+        />
       </label>
     </div>
   );

@@ -13,9 +13,13 @@ const handleChange = (e) => {
   const { name, value } = e.target;
     setUser({...user, [name]:value});
 };
-const handleSubmit = () => {
+const handleSubmit = async() => {
     try {
-        const register = await AuthService.register(user.username, user.email, user.password);
+        const register = await AuthService.register(
+          user.username, 
+          user.email, 
+          user.password
+        );
         if(register.status === 200) {
             Swal.fire({
                 title: "User Registration",

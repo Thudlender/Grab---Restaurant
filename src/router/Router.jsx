@@ -3,7 +3,7 @@ import Home from "../pages/Home";
 import AddPage from "../pages/AddPage";
 import Edit from "../pages/Edit";
 import Login from "../pages/Login";
-import Register from "../Register";
+import Register from "../pages/Register";
 
 const router = createBrowserRouter([
   {
@@ -22,5 +22,9 @@ const router = createBrowserRouter([
     path: "/login",
     element: <Login />,
   },
+  {
+    path: "/register",
+    element: <Register />,
+  },
 ]);
-export default router
+export default router;
