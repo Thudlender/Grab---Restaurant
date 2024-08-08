@@ -3,9 +3,10 @@ import UserProfile from "./UserProfile";
 import LoginButton from "./LoginButton";
 import RegisterButton from "./RegisterButton";
 import { useAuthContext } from "../context/AuthContext";
+
 const Navbar = () => {
-  const { user, logout } = useAuthContext();
-  console.log("user", user);
+  const { user } = useAuthContext();
+  
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -20,6 +21,9 @@ const Navbar = () => {
               ADD MENU
             </a>
           </div>
+
+          
+
           {user ? (
             <UserProfile />
           ) : (

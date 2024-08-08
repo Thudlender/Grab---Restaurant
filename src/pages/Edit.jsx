@@ -30,7 +30,6 @@ const Edit = () => {
     };
     const handSubmit = async () => {
         try {
-            //TODO
             const response = await fetch("http://localhost:5000/restaurants/" + id,{
                 method: "PUT",
                 body: JSON.stringify(restaurants)

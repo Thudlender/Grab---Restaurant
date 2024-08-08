@@ -1,16 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
 import { RouterProvider } from "react-router-dom";
-import router from './router/Router';
-import { AuthProvider } from './context/AuthContext';
-import Navbar from "../src/Components/Navbar"
+import router from "./router/Router";
+import { AuthProvider } from "./context/AuthContext";
+import Navbar from "../src/Components/Navbar";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider>
-      <Navbar />
-      <RouterProvider router={router}/>
-    </AuthProvider>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );

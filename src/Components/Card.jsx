@@ -23,11 +23,11 @@ export const Card = ({ id, img, title, type }) => {
             className="h-48 w-80 object-cover"
             
             src={img}
-            alt={title}
+            alt={name}
           />
         </figure>
         <div className="card-body">
-          <h2 className="card-title">{title}</h2>
+          <h2 className="card-title">{name}</h2>
           <p>{type}</p>
           <div className="card-actions justify-end">
           <button className="btn  btn-error" onClick={()=>handeDelete(id)}>
