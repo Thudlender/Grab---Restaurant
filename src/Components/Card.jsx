@@ -6,10 +6,10 @@ export const Card = ({ id, img, title, type }) => {
       const response = await fetch("http://localhost:5000/restaurants/" + id, {
         method: "DELETE"
       });
-      if (response.ok) {
-        alert("DELETE JA");
-        window.location.reload();
-      }
+      // if (response.ok) {
+      //   alert(`Restaurant id : ${id} is Deleted!`);
+      //   window.location.reload();
+      // }
     } catch (err) {
       console.log(err);
     }
@@ -19,12 +19,7 @@ export const Card = ({ id, img, title, type }) => {
     <div>
       <div className="card card-compact w-80 h-80 bg-base-100 shadow-xl hover:translate-y-3">
         <figure>
-          <img
-            className="h-48 w-80 object-cover"
-            
-            src={img}
-            alt={name}
-          />
+        <img src={imgUrl} alt="" className="rounded w-72 h-48" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
