@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 const Login = () => {
   const [user,setUser] = useState({
     username:"",
-    password:""
+    userPassword:""
   });
   const navigate = useNavigate();
   
@@ -37,17 +37,17 @@ const Login = () => {
       
     setUser({
     username:"",
-    password:""
+    userPassword:""
   });
   navigate("/");
     } 
     }
-    catch (error) {}
-    Swal.fire({
+    catch (error) {    Swal.fire({
       title: "User Login",
-      text: error?.response?.data?.message || error.message,
+      text: error?.response?.message || error.message,
       icon: "error",
-    });
+    });}
+
   }
   const handleCancel = () => {
     setUser({ username: "", userPassword: "" });

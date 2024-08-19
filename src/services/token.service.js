@@ -1,4 +1,4 @@
-const getLocalAccessToke = () => {
+const getLocalAccessToken = () => {
   const user = getUser();
   return user?.accessToken;
 };
@@ -15,7 +15,7 @@ const removeUser = () => {
   localStorage.removeUser("user");
 };
 const TokenService = {
-  getLocalAccessToke,
+  getLocalAccessToken,
   setUser,
   getUser,
   removeUser,

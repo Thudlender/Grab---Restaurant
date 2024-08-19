@@ -1,7 +1,11 @@
 import React from "react";
+import Swal from "sweetalert2";
+import RestaurantService from "../services/restaurant.service";
+import { useAuthContext } from "../context/AuthContext";
 
 export const Card = ({ id, img, title, type }) => {
-  const handeDelete = async (id) =>{
+  const { user } = useAuthContext();
+  const handeDelete = async (id) => {
     try {
       const response = await fetch("http://localhost:5000/restaurants/" + id, {
         method: "DELETE"
@@ -24,14 +28,21 @@ export const Card = ({ id, img, title, type }) => {
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
           <p>{type}</p>
+
+      {user && 
+        (user.roles.includes("ROLES_MODERATOR") || 
+          user.roles.includes("ROLES_ADMIN")) && (
           <div className="card-actions justify-end">
+            {user.roles.includes("ROLES_ADMIN") && (
           <button className="btn  btn-error" onClick={()=>handeDelete(id)}>
               Delete
             </button>
+            )}
             <a href={`/Edit/${id}`} className="btn btn-primary">
               Edit Now
             </a>
           </div>
+          )}
         </div>
       </div>
     </div>

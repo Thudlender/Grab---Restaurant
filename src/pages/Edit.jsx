@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import RestaurantService from "../services/restaurant.service";
 
 const Edit = () => {
     // 1. Get ID from query string
     const {id} = useParams();
     const navigate = useNavigate()
     const [restaurants, setRestaurants] = useState({
-        title:"",
-        type:"",
-        img:"",
+      title: "",
+      type: "",
+      imageUrl: "",
     });
     // 2. Get restaurant by ID
     useEffect(()=>{
+        RestaurantService.getRestaurantById(id).then((response)=> {
+            if(response.status === 200){
+                setRestaurants(response.data);
+            }
+        })
         fetch("http://localhost:5000/restaurants/"+id)
           .then((res) => {
             return res.json();
@@ -30,17 +36,22 @@ const Edit = () => {
     };
     const handSubmit = async () => {
         try {
-            const response = await fetch("http://localhost:5000/restaurants/" + id,{
-                method: "PUT",
-                body: JSON.stringify(restaurants)
-            });
-            if (response.ok) {
-                alert("Update a restaurant id="+id+"successfully!")
+            const response = await RestaurantService.editRestaurant(id, restaurants);
+            if(response.status === 200) {
+                Swal.fire({
+                  title: "Restaurant update",
+                  text: response.data.message,
+                  icon: "success",
+                });
                 navigate("/")
             }
         }
       catch (error) {
-        console.log(error);
+        Swal.fire({
+          title: "Restaurant Update",
+          text: error?.response?.data?.message || error.message,
+          icon: "error",
+        });
     }
 };
 return (
