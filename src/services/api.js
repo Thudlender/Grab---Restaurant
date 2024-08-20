@@ -8,16 +8,17 @@ const instance = axios.create({
   },
 });
 //add interceptor to request object
-instance.interceptors.request.use((config)=>{
-  const token = TokenService.getLocalAccessToken();
-  if(token){
-    config.headers['x-access-token'] = token;
+instance.interceptors.request.use(
+  (config) => {
+    const token = TokenService.getLocalAccessToken();
+    if (token) {
+      config.headers["x-access-token"] = token;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
   }
-  return config;
-},
-(error) => {
-  return Promise.reject(error);
-}
 );
 
 export default instance;
