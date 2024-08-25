@@ -27,7 +27,7 @@ export const Card = ({ id, img, title, type }) => {
         </figure>
         <div className="card-body">
           <h2 className="card-title">{name}</h2>
-          <p>{type}</p>
+          <p className="text-sm">{type}</p>
 
       {user && 
         (user.roles.includes("ROLES_MODERATOR") || 
