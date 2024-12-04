@@ -1,12 +1,13 @@
 import React from 'react'
-import { NameAndSearch, Search, Shop } from './Components';
+import { NameAndSearch, Search } from './Components';
+import Restaurants from './Components/Restaurant';
 const App = () => {
   return (
     <>
     <div className="container">
       <NameAndSearch />
       <Search />
-      <Shop />
+      <Restaurants />
     </div>  
     </>
   );

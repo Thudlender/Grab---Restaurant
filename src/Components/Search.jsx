@@ -1,6 +1,27 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 const Search = () => {
+  // const [keyword, setKeyboard] = useState("")
+  // const handleChange = (e) =>{
+  //   setKeyboard(e.target.value);
+  useEffect(() => {
+      .then((res) => {
+      })
+      .then((response) => {
+        setRestaurants(response);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+  const filter = (restaurants, keyboard) => {
+    const result = [];
+    //Todo
+    //Still Error
+
+    return result;
+  };
+  
   return (
     <div className='py-10'>
     <div class="flex rounded-md border-2 border-blue-500 overflow-hidden max-w-5xl mx-auto font-[sans-serif]">
